@@ -1,0 +1,21 @@
+@use 'sass:math';
+
+@mixin flexin($direction: row, $justify: center, $align: center) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: $justify;
+  align-items: $align;
+}
+
+@mixin hover($color, $percent: 25%) {
+  &:hover {
+    background-color: color-mix(in srgb, $color calc(100% - $percent), white $percent);
+  }
+  &:active {
+    background-color: color-mix(
+      in srgb,
+      $color calc(100% - math.div($percent, 2)),
+      black math.div($percent, 2)
+    );
+  }
+}
